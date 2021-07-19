@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="proj_board.mapper.BoardMapper">
+
+	<resultMap type="BoardVO" id="ResBoard">
+		<id property="bno" column="bno"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="writer" column="writer"/>
+		<result property="regdate" column="regdate"/>
+		<result property="updateDate" column="updatedate"/>
+	</resultMap>
+	
+	<select id="getList" resultMap="ResBoard">
+		<![CDATA[
+		select * from tbl_board where bno > 0
+		]]>
+	</select>
+
+	<select id="read" resultMap="ResBoard">
+		 select * 
+		  from tbl_board
+	    where bno = #{bno}
+	</select>
+
+	<insert id="insert">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="long">
+			SELECT MAX(bno)+1 FROM tbl_board 
+		</selectKey>
+		 insert 
+   		    into tbl_board (bno, title, content, writer)
+		values (#{bno}, #{title}, #{content}, #{writer})
+	</insert>
+	
+	<delete id="delete">
+		delete 
+		  from tbl_board
+        where bno = #{bno}		  
+	</delete>
+	
+	<update id="update">
+		update tbl_board
+		     set title = #{title},
+		          content = #{content},
+		          writer = #{writer}
+		 where bno = #{bno}
+	</update>
+	
+</mapper>
