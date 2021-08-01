@@ -73,10 +73,10 @@ public class BoardServiceTest {
 		Assert.assertEquals(true, res);
 	}
 
-	@Test
-	public void test4GetList() {
-		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
-		Assert.assertNotNull(service.getList());
-	}
+//	@Test
+//	public void test4GetList() {
+//		log.debug(Thread.currentThread().getStackTrace()[1].getMethodName()+"()");
+//		Assert.assertNotNull(service.getList());
+//	}
 
 }

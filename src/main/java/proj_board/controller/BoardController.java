@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
+import proj_board.domain.Criteria;
 import proj_board.dto.BoardVO;
+import proj_board.dto.pageDTO;
 import proj_board.service.BoardService;
 
 @Controller
@@ -20,8 +22,9 @@ public class BoardController {
 	private BoardService service;
 	
 	@GetMapping
-	public void list(Model model) {
-		model.addAttribute("list", service.getList());
+	public void list(Criteria cri, Model model) {
+		model.addAttribute("list", service.getList(cri));
+		model.addAttribute("pageMaker", new pageDTO(123, cri));
 	}
 	
 	@PostMapping

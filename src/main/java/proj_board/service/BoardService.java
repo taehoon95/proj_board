@@ -2,6 +2,7 @@ package proj_board.service;
 
 import java.util.List;
 
+import proj_board.domain.Criteria;
 import proj_board.dto.BoardVO;
 
 public interface BoardService {
@@ -14,5 +15,6 @@ public interface BoardService {
 	
 	public boolean remove(Long bno);
 	
-	public List<BoardVO> getList();
+	/*페이징용*/
+	public List<BoardVO> getList(Criteria cri);
 }
