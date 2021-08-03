@@ -38,9 +38,8 @@ select bno,title,content,writer,regdate,updatedate
         SELECT  
                @rownum :=@rownum+1 rn ,bno,title,content,writer,regdate,updatedate 
           from tbl_board 
-         where (@rownum:= 0) <= 20 
-         order by rn desc 
+         where (@rownum:= 0) = 0 
        ) c 
-where rn > 10;
+where rn between 11 and 20;
 
 select bno,title,content,writer,regdate,updatedate from ( SELECT @rownum :=@rownum+1 rn ,bno,title,content,writer,regdate,updatedate from tbl_board where (@rownum:= 0) <= 2 * 10 order by rn desc ) c where rn > (2 - 1) * 10

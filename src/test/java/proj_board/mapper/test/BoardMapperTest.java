@@ -81,7 +81,7 @@ public class BoardMapperTest {
 		
 		Criteria cri = new Criteria();
 		cri.setAmount(10);
-		cri.setPageNum(2);
+		cri.setPageNum(1);
 		List<BoardVO> list = mapper.getListWithPaging(cri);
 		
 		Assert.assertNotNull(list);
